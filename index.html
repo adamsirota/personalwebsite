@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Adam</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <button id="theme-toggle" type="button" aria-label="Toggle dark mode">Dark mode</button>
+        <h1>Adam Sirota</h1>
+        <h3>I am a software engineer with a passion for using software to democratize access to information and resources. Studying Computer Science at the University of Maryland, College Park until December 2026.</h3>
+        <div class="contact-links">
+            <a href="mailto:adamsirota2006@gmail.com">Email</a>
+            <span aria-hidden="true">|</span>
+            <a href="https://www.linkedin.com/in/adamsirota13/" target="_blank">LinkedIn</a>
+        </div>
+        <div id="highlights">
+            <h3>Experience</h3>
+            <h4>Work</h4>
+            <p>Incoming Software Engineer Intern at <a href="https://bankofamerica.com" target="_blank">Bank of America</a> (June 2026 - August 2026)</p>
+            <p>Software Developer at <a href="https://kaboom.ai" target="_blank">Kaboom AI 💥</a> (June 2025 - Present)</p>
+            <ul>
+                <li>Work in a small team of developers at an early stage startup, building a platform for AI-integrated account management.</li>
+                <li>Built out several unstructured data -> AI-informed insight pipelines + Cross-platform integrations with CRMs.</li>
+            </ul>
+            <p>Previous AI Pre-Intern at <a href="https://citigroup.com" target="_blank">Citigroup</a> (June 2023 - August 2023)</p>
+            <ul>
+                <li>Worked in a group to utilize NLP and ML techniques to interact with a large dataset of complaints filed to banks.</li>
+                <li>Found and visualized  patterns in the data, and trained/tested a LightGBM model to categorize new incoming complaints.</li>
+            </ul>
+            <h4>Skills</h4>
+            <ul>
+                <li>Languages: Python, Java, HTML/CSS/JS, OCaml, SQL</li>
+                <li>Tools and Frameworks: Git, React, Postgres, Spring Boot, Docker, Postman, REST API, FastAPI, JIRA, AWS Lambda</li>
+            </ul>
+        </div>
+        <div id = "currently">
+            <h3>Currently</h3>
+            <h4>Courses:</h4>
+            <ul>
+                <li>CMSC 422 - Machine Learning</li>
+                <li>CMSC 434 - Human-Computer Interaction</li>
+                <li>CMSC 335 - Web App Development with JavaScript</li>
+                <li>PHIL438K - Philosophical Anarchism</li>
+                <li>PHIL408J - Ethics of Immigration</li>
+            </ul>
+            <h4>Media:</h4>
+            <ul>
+                <li>Reading: Go Tell It on the Mountain by James Baldwin + <a href="https://substack.com/home/post/p-187013036" target="_blank">This Article</a></li>
+                <li>Watching: The Sopranos + <a href="https://letterboxd.com/adamsiro/" target="_blank">My Letterboxd</a></li>
+                <li>Listening: SPOTIFY API PLACEHOLDER</li>
+            </ul>
+            <h4>Other Interests:</h4>
+            <ul>
+                <li>Lifting</li>
+                <li>Learning Guitar</li>
+                <li>Knicks, Mets, Man United, and the UFC</li>
+            </ul>
+        </div>
+
+
+        <script>
+            (function () {
+                const root = document.documentElement;
+                const button = document.getElementById("theme-toggle");
+                const savedTheme = localStorage.getItem("theme");
+                const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+                const setTheme = (theme) => {
+                    root.setAttribute("data-theme", theme);
+                    button.textContent = theme === "dark" ? "Light mode" : "Dark mode";
+                };
+
+                setTheme(savedTheme || (prefersDark ? "dark" : "light"));
+
+                button.addEventListener("click", () => {
+                    const nextTheme = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+                    setTheme(nextTheme);
+                    localStorage.setItem("theme", nextTheme);
+                });
+            })();
+        </script>
+    </body>
+</html>

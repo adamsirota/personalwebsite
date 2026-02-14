@@ -1,0 +1,138 @@
+:root {
+    --bg-gradient-start: #f8fafc;
+    --bg-gradient-end: #eef2ff;
+    --text-primary: #1f2937;
+    --text-heading: #0f172a;
+    --text-subheading: #334155;
+    --text-section: #111827;
+    --card-bg: rgba(255, 255, 255, 0.9);
+    --card-border: #e2e8f0;
+    --shadow: rgba(15, 23, 42, 0.08);
+    --link: #2563eb;
+    --button-bg: #ffffff;
+    --button-border: #d1d5db;
+}
+
+html[data-theme="dark"] {
+    --bg-gradient-start: #0f172a;
+    --bg-gradient-end: #111827;
+    --text-primary: #e5e7eb;
+    --text-heading: #f8fafc;
+    --text-subheading: #cbd5e1;
+    --text-section: #f1f5f9;
+    --card-bg: rgba(17, 24, 39, 0.8);
+    --card-border: #334155;
+    --shadow: rgba(0, 0, 0, 0.35);
+    --link: #60a5fa;
+    --button-bg: #1f2937;
+    --button-border: #475569;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 48px 20px;
+    font-family: "Inter", "Segoe UI", Roboto, Arial, sans-serif;
+    line-height: 1.6;
+    color: var(--text-primary);
+    background: linear-gradient(180deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
+    text-align: left;
+}
+
+h1 {
+    margin: 0 0 8px;
+    font-size: clamp(2rem, 4vw, 2.6rem);
+    line-height: 1.2;
+    color: var(--text-heading);
+}
+
+h3 {
+    margin: 0 0 14px;
+    font-weight: 500;
+    color: var(--text-subheading);
+}
+
+h4 {
+    margin: 20px 0 8px;
+    font-size: 1.05rem;
+    color: var(--text-section);
+}
+
+.contact-links {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+    color: var(--text-subheading);
+}
+
+.contact-links a {
+    font-weight: 600;
+}
+
+h1,
+body > h3,
+.contact-links {
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#theme-toggle {
+    position: fixed;
+    top: 16px;
+    right: 16px;
+    padding: 8px 12px;
+    border: 1px solid var(--button-border);
+    border-radius: 999px;
+    background: var(--button-bg);
+    color: var(--text-primary);
+    font: inherit;
+    font-size: 0.9rem;
+    cursor: pointer;
+    box-shadow: 0 6px 20px var(--shadow);
+}
+
+#theme-toggle:hover {
+    opacity: 0.9;
+}
+
+#currently,
+#highlights {
+    padding: 0;
+    margin: 0 auto 28px;
+    max-width: 900px;
+}
+
+#highlights h3 {
+    margin-bottom: 10px;
+}
+
+ul {
+    margin: 0;
+    padding-left: 0;
+    list-style-position: inside;
+}
+
+li {
+    margin: 8px 0;
+}
+
+a {
+    color: var(--link);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+#highlights {
+    margin-top: 24px;
+}
