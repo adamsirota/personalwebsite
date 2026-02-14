@@ -50,7 +50,18 @@
             <ul>
                 <li>Reading: Go Tell It on the Mountain by James Baldwin + <a href="https://substack.com/home/post/p-187013036" target="_blank">This Article</a></li>
                 <li>Watching: The Sopranos + <a href="https://letterboxd.com/adamsiro/" target="_blank">My Letterboxd</a></li>
-                <li>Listening: SPOTIFY API PLACEHOLDER</li>
+                <li>
+                    Listening:
+                    <ul id="spotify-stats" class="spotify-stats" aria-live="polite">
+                        <li id="spotify-last-played">Last played: Loading...</li>
+                        <li>
+                            <span class="spotify-subheading">Top artists (last 4 weeks):</span>
+                            <ol id="spotify-top-artists">
+                                <li>Loading...</li>
+                            </ol>
+                        </li>
+                    </ul>
+                </li>
             </ul>
             <h4>Other Interests:</h4>
             <ul>
@@ -80,6 +91,66 @@
                     setTheme(nextTheme);
                     localStorage.setItem("theme", nextTheme);
                 });
+
+                const lastPlayedEl = document.getElementById("spotify-last-played");
+                const topArtistsEl = document.getElementById("spotify-top-artists");
+
+                const renderSpotifyFallback = () => {
+                    lastPlayedEl.textContent = "Last played: unavailable right now.";
+                    topArtistsEl.innerHTML = "<li>Unable to load top artists.</li>";
+                };
+
+                const loadSpotifyStats = async () => {
+                    try {
+                        const response = await fetch("/api/spotify/stats");
+                        if (!response.ok) {
+                            throw new Error("Spotify API request failed");
+                        }
+
+                        const data = await response.json();
+                        const artists = Array.isArray(data.topArtists) ? data.topArtists.slice(0, 3) : [];
+                        const playedAtText = data.lastPlayed?.playedAt
+                            ? new Date(data.lastPlayed.playedAt).toLocaleString(undefined, {
+                                  dateStyle: "medium",
+                                  timeStyle: "short"
+                              })
+                            : null;
+
+                        if (data.lastPlayed && data.lastPlayed.track && data.lastPlayed.artist) {
+                            const trackUrl = data.lastPlayed.url || "#";
+                            lastPlayedEl.innerHTML =
+                                'Last played: <a href="' +
+                                trackUrl +
+                                '" target="_blank" rel="noopener noreferrer">' +
+                                data.lastPlayed.track +
+                                "</a> - " +
+                                data.lastPlayed.artist +
+                                (playedAtText ? ' <span class="spotify-timestamp">(' + playedAtText + ")</span>" : "");
+                        } else {
+                            lastPlayedEl.textContent = "Last played: no recent data.";
+                        }
+
+                        if (!artists.length) {
+                            topArtistsEl.innerHTML = "<li>No artist data available.</li>";
+                            return;
+                        }
+
+                        topArtistsEl.innerHTML = "";
+                        artists.forEach((artist) => {
+                            const li = document.createElement("li");
+                            if (artist.url) {
+                                li.innerHTML = '<a href="' + artist.url + '" target="_blank" rel="noopener noreferrer">' + artist.name + "</a>";
+                            } else {
+                                li.textContent = artist.name;
+                            }
+                            topArtistsEl.appendChild(li);
+                        });
+                    } catch (error) {
+                        renderSpotifyFallback();
+                    }
+                };
+
+                loadSpotifyStats();
             })();
         </script>
     </body>
