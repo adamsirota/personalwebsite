@@ -167,3 +167,78 @@ a:hover {
 #highlights {
     margin-top: 24px;
 }
+
+.lab-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.lab-subtitle {
+    margin: 0 0 18px;
+    color: var(--text-subheading);
+}
+
+.lab-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 16px;
+    box-shadow: 0 8px 24px var(--shadow);
+}
+
+#lab-login-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+}
+
+#lab-login-form label {
+    width: 100%;
+}
+
+#lab-login-form input {
+    flex: 1;
+    min-width: 220px;
+    padding: 8px;
+    border: 1px solid var(--button-border);
+    border-radius: 8px;
+    background: var(--button-bg);
+    color: var(--text-primary);
+}
+
+#lab-login-form button,
+.lab-actions button {
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 1px solid var(--button-border);
+    background: var(--button-bg);
+    color: var(--text-primary);
+    cursor: pointer;
+}
+
+.lab-error {
+    color: #dc2626;
+    min-height: 1.2em;
+}
+
+.lab-actions {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.lab-status {
+    color: var(--text-subheading);
+}
+
+.lab-range {
+    margin-top: 12px;
+}
+
+.lab-artists {
+    margin: 0;
+    padding-left: 20px;
+}

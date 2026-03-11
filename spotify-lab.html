@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Spotify Lab (Private)</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <button id="theme-toggle" type="button" aria-label="Toggle dark mode">Dark mode</button>
+        <main class="lab-container">
+            <h1>Spotify Lab</h1>
+            <p class="lab-subtitle">Private dashboard for top artist analysis.</p>
+
+            <section id="lab-login" class="lab-card">
+                <h3>Password Required</h3>
+                <form id="lab-login-form">
+                    <label for="lab-password">Password</label>
+                    <input id="lab-password" type="password" autocomplete="current-password" required>
+                    <button type="submit">Unlock</button>
+                </form>
+                <p id="lab-login-error" class="lab-error" aria-live="polite"></p>
+            </section>
+
+            <section id="lab-content" class="lab-card" hidden>
+                <div class="lab-actions">
+                    <button id="lab-refresh" type="button">Refresh</button>
+                    <button id="lab-logout" type="button">Lock</button>
+                    <a href="/">Back to homepage</a>
+                </div>
+                <p id="lab-status" class="lab-status" aria-live="polite">Loading...</p>
+                <div id="lab-ranges"></div>
+            </section>
+        </main>
+
+        <script>
+            (function () {
+                const root = document.documentElement;
+                const themeButton = document.getElementById("theme-toggle");
+                const savedTheme = localStorage.getItem("theme");
+                const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+                const setTheme = (theme) => {
+                    root.setAttribute("data-theme", theme);
+                    themeButton.textContent = theme === "dark" ? "Light mode" : "Dark mode";
+                };
+
+                setTheme(savedTheme || (prefersDark ? "dark" : "light"));
+                themeButton.addEventListener("click", function () {
+                    const nextTheme = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+                    setTheme(nextTheme);
+                    localStorage.setItem("theme", nextTheme);
+                });
+
+                const loginSection = document.getElementById("lab-login");
+                const contentSection = document.getElementById("lab-content");
+                const loginForm = document.getElementById("lab-login-form");
+                const passwordInput = document.getElementById("lab-password");
+                const loginError = document.getElementById("lab-login-error");
+                const statusEl = document.getElementById("lab-status");
+                const rangesEl = document.getElementById("lab-ranges");
+                const refreshButton = document.getElementById("lab-refresh");
+                const logoutButton = document.getElementById("lab-logout");
+
+                function showLogin(message) {
+                    loginSection.hidden = false;
+                    contentSection.hidden = true;
+                    loginError.textContent = message || "";
+                    if (!message) {
+                        passwordInput.focus();
+                    }
+                }
+
+                function showContent() {
+                    loginSection.hidden = true;
+                    contentSection.hidden = false;
+                }
+
+                function renderArtistList(artists) {
+                    if (!artists || !artists.length) {
+                        return "<li>No data available.</li>";
+                    }
+
+                    return artists
+                        .map(function (artist) {
+                            const name = artist.name || "Unknown artist";
+                            const playsText = Number.isFinite(artist.plays) ? " (" + artist.plays + " plays)" : "";
+                            if (artist.url) {
+                                return (
+                                    '<li><a href="' +
+                                    artist.url +
+                                    '" target="_blank" rel="noopener noreferrer">' +
+                                    name +
+                                    "</a>" +
+                                    playsText +
+                                    "</li>"
+                                );
+                            }
+                            return "<li>" + name + playsText + "</li>";
+                        })
+                        .join("");
+                }
+
+                function renderRanges(ranges) {
+                    const orderedRanges = [
+                        { key: "week", title: "Top 20 - Past week" },
+                        { key: "fourWeeks", title: "Top 20 - Past 4 weeks" },
+                        { key: "sixMonths", title: "Top 20 - Past 6 months" },
+                        { key: "yearToDate", title: "Top 20 - Since Jan 1" }
+                    ];
+
+                    rangesEl.innerHTML = orderedRanges
+                        .map(function (entry) {
+                            const rangeData = ranges && ranges[entry.key] ? ranges[entry.key] : { artists: [] };
+                            return (
+                                '<section class="lab-range">' +
+                                "<h3>" +
+                                entry.title +
+                                "</h3>" +
+                                '<ol class="lab-artists">' +
+                                renderArtistList(rangeData.artists) +
+                                "</ol>" +
+                                "</section>"
+                            );
+                        })
+                        .join("");
+                }
+
+                async function loadStats() {
+                    statusEl.textContent = "Loading Spotify data...";
+                    try {
+                        const response = await fetch("/api/spotify/private/stats");
+                        if (response.status === 401) {
+                            showLogin("Session locked. Enter password.");
+                            return;
+                        }
+                        if (!response.ok) {
+                            throw new Error("Failed to load private Spotify stats.");
+                        }
+                        const data = await response.json();
+                        showContent();
+                        renderRanges(data.ranges || {});
+                        statusEl.textContent = "Updated at " + new Date().toLocaleTimeString();
+                    } catch (error) {
+                        statusEl.textContent = "Unable to load Spotify stats right now.";
+                    }
+                }
+
+                async function checkSession() {
+                    try {
+                        const response = await fetch("/api/private/session");
+                        const data = await response.json();
+                        if (data.authenticated) {
+                            showContent();
+                            loadStats();
+                        } else {
+                            showLogin();
+                        }
+                    } catch (error) {
+                        showLogin("Unable to verify session.");
+                    }
+                }
+
+                loginForm.addEventListener("submit", async function (event) {
+                    event.preventDefault();
+                    loginError.textContent = "";
+                    try {
+                        const response = await fetch("/api/private/login", {
+                            method: "POST",
+                            headers: { "Content-Type": "application/json" },
+                            body: JSON.stringify({ password: passwordInput.value })
+                        });
+                        if (!response.ok) {
+                            throw new Error("Invalid password.");
+                        }
+                        passwordInput.value = "";
+                        showContent();
+                        loadStats();
+                    } catch (error) {
+                        showLogin("Wrong password.");
+                    }
+                });
+
+                refreshButton.addEventListener("click", loadStats);
+
+                logoutButton.addEventListener("click", async function () {
+                    await fetch("/api/private/logout", { method: "POST" });
+                    showLogin("Locked.");
+                });
+
+                checkSession();
+            })();
+        </script>
+    </body>
+</html>
