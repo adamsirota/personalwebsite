@@ -82,8 +82,17 @@ function isPrivateAuthorized(req) {
     return isValidPrivateSessionToken(cookies[PRIVATE_COOKIE_NAME]);
 }
 
+function hasValidPrivatePassword(req) {
+    const configuredPassword = process.env.PRIVATE_TAB_PASSWORD;
+    if (!configuredPassword) {
+        return false;
+    }
+    const providedPassword = req.headers["x-private-password"];
+    return timingSafeEqualString(providedPassword || "", configuredPassword);
+}
+
 function requirePrivateAuth(req, res, next) {
-    if (!isPrivateAuthorized(req)) {
+    if (!isPrivateAuthorized(req) && !hasValidPrivatePassword(req)) {
         return res.status(401).json({ error: "Unauthorized." });
     }
     return next();

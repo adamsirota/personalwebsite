@@ -61,6 +61,7 @@
                 const rangesEl = document.getElementById("lab-ranges");
                 const refreshButton = document.getElementById("lab-refresh");
                 const logoutButton = document.getElementById("lab-logout");
+                let privatePassword = "";
 
                 function showLogin(message) {
                     loginSection.hidden = false;
@@ -129,9 +130,13 @@
                 async function loadStats() {
                     statusEl.textContent = "Loading Spotify data...";
                     try {
-                        const response = await fetch("/api/spotify/private/stats");
+                        const response = await fetch("/api/spotify/private/stats", {
+                            headers: {
+                                "x-private-password": privatePassword
+                            }
+                        });
                         if (response.status === 401) {
-                            showLogin("Session locked. Enter password.");
+                            showLogin("Wrong password.");
                             return;
                         }
                         if (!response.ok) {
@@ -146,49 +151,23 @@
                     }
                 }
 
-                async function checkSession() {
-                    try {
-                        const response = await fetch("/api/private/session");
-                        const data = await response.json();
-                        if (data.authenticated) {
-                            showContent();
-                            loadStats();
-                        } else {
-                            showLogin();
-                        }
-                    } catch (error) {
-                        showLogin("Unable to verify session.");
-                    }
-                }
-
                 loginForm.addEventListener("submit", async function (event) {
                     event.preventDefault();
                     loginError.textContent = "";
-                    try {
-                        const response = await fetch("/api/private/login", {
-                            method: "POST",
-                            headers: { "Content-Type": "application/json" },
-                            body: JSON.stringify({ password: passwordInput.value })
-                        });
-                        if (!response.ok) {
-                            throw new Error("Invalid password.");
-                        }
-                        passwordInput.value = "";
-                        showContent();
-                        loadStats();
-                    } catch (error) {
-                        showLogin("Wrong password.");
-                    }
+                    privatePassword = passwordInput.value;
+                    passwordInput.value = "";
+                    showContent();
+                    loadStats();
                 });
 
                 refreshButton.addEventListener("click", loadStats);
 
                 logoutButton.addEventListener("click", async function () {
-                    await fetch("/api/private/logout", { method: "POST" });
+                    privatePassword = "";
                     showLogin("Locked.");
                 });
 
-                checkSession();
+                showLogin();
             })();
         </script>
     </body>
