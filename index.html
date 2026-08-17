@@ -4,86 +4,168 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Adam</title>
+        <title>Adam Sirota</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="styles.css">
     </head>
     <body>
-        <button id="theme-toggle" type="button" aria-label="Toggle dark mode">Dark mode</button>
-        <h1>Adam Sirota</h1>
-        <h3>I am a software engineer with a passion for using software to democratize access to information and resources. Studying Computer Science at the University of Maryland, College Park until December 2026.</h3>
-        <div class="contact-links">
-            <a href="mailto:adamsirota2006@gmail.com">Email</a>
-            <span aria-hidden="true">|</span>
-            <a href="https://www.linkedin.com/in/adamsirota13/" target="_blank">LinkedIn</a>
-            <span aria-hidden="true">|</span>
-            <a href="spotify-lab.html">Private Tab</a>
-        </div>
-        <div id="highlights">
-            <h3>Experience</h3>
-            <h4>Work</h4>
-            <p>Incoming Software Engineer Intern at <a href="https://bankofamerica.com" target="_blank">Bank of America</a> (June 2026 - August 2026)</p>
-            <p>Software Developer at <a href="https://kaboom.ai" target="_blank">Kaboom AI 💥</a> (June 2025 - Present)</p>
-            <ul>
-                <li>Work in a small team of developers at an early stage startup, building a platform for AI-integrated account management.</li>
-                <li>Built out several unstructured data -> AI-informed insight pipelines + Cross-platform integrations with CRMs.</li>
-            </ul>
-            <p>Previous AI Pre-Intern at <a href="https://citigroup.com" target="_blank">Citigroup</a> (June 2023 - August 2023)</p>
-            <ul>
-                <li>Worked in a group to utilize NLP and ML techniques to interact with a large dataset of complaints filed to banks.</li>
-                <li>Found and visualized  patterns in the data, and trained/tested a LightGBM model to categorize new incoming complaints.</li>
-            </ul>
-            <h4>Skills</h4>
-            <ul>
-                <li>Languages: Python, Java, HTML/CSS/JS, OCaml, SQL</li>
-                <li>Tools and Frameworks: Git, React, Postgres, Spring Boot, Docker, Postman, REST API, FastAPI, JIRA, AWS Lambda</li>
-            </ul>
-        </div>
-        <div id = "currently">
-            <h3>Currently</h3>
-            <h4>Courses:</h4>
-            <ul>
-                <li>CMSC 422 - Machine Learning</li>
-                <li>CMSC 434 - Human-Computer Interaction</li>
-                <li>CMSC 335 - Web App Development with JavaScript</li>
-                <li>PHIL438K - Philosophical Anarchism</li>
-                <li>PHIL408J - Ethics of Immigration</li>
-            </ul>
-            <h4>Media:</h4>
-            <ul>
-                <li>Reading: Go Tell It on the Mountain by James Baldwin + When All Else Fails by Jason Brennan + <a href="https://substack.com/home/post/p-187013036" target="_blank">This Article</a></li>
-                <li>Watching: The Sopranos + <a href="https://letterboxd.com/adamsiro/" target="_blank">My Letterboxd</a></li>
-                <li>
-                    Listening:
-                    <ul id="spotify-stats" class="spotify-stats" aria-live="polite">
-                        <li id="spotify-last-played">Last played: Loading...</li>
-                        <li>
-                            <span class="spotify-subheading">Top artists (last 4 weeks):</span>
-                            <ol id="spotify-top-artists">
+        <div class="bg-glow bg-glow-a" aria-hidden="true"></div>
+        <div class="bg-glow bg-glow-b" aria-hidden="true"></div>
+
+        <button id="theme-toggle" type="button" aria-label="Toggle dark mode">
+            <span class="theme-toggle-icon" aria-hidden="true"></span>
+            <span class="theme-toggle-label">Dark mode</span>
+        </button>
+
+        <div class="page">
+            <header class="hero fade-in">
+                <p class="hero-eyebrow">Software Engineer &middot; College Park, MD</p>
+                <h1>Adam Sirota</h1>
+                <h3>I am a software engineer with a passion for using software to democratize access to information and resources. Studying Computer Science and Philosophy at the University of Maryland, College Park.</h3>
+                <div class="contact-links">
+                    <a class="pill-link" href="mailto:adamsirota2006@gmail.com">
+                        <svg class="pill-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 6.5C3 5.67 3.67 5 4.5 5h15c.83 0 1.5.67 1.5 1.5v11c0 .83-.67 1.5-1.5 1.5h-15A1.5 1.5 0 0 1 3 17.5v-11Z" stroke="currentColor" stroke-width="1.6"/><path d="m4 6.5 8 6.5 8-6.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        Email
+                    </a>
+                    <a class="pill-link" href="https://www.linkedin.com/in/adamsirota13/" target="_blank">
+                        <svg class="pill-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.5 9.5v8M6.5 6.5v.01" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M11 17.5v-4.7c0-1.7 1-3.05 2.75-3.05 1.7 0 2.75 1.15 2.75 3.15v4.6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M11 17.5v-8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><rect x="3.5" y="3.5" width="17" height="17" rx="4" stroke="currentColor" stroke-width="1.6"/></svg>
+                        LinkedIn
+                    </a>
+                </div>
+            </header>
+
+            <section id="highlights" class="section fade-in">
+                <h2 class="section-heading">Experience</h2>
+
+                <h4 class="subsection-heading">Work</h4>
+                <div class="card-grid">
+                    <article class="card">
+                        <div class="card-header">
+                            <div>
+                                <p class="card-title">Software Engineer Intern &middot; <a href="https://bankofamerica.com" target="_blank">Bank of America</a></p>
+                                <p class="card-meta">June 2026 &ndash; August 2026</p>
+                            </div>
+                        </div>
+                        <ul class="card-list">
+                            <li>Worked on the DNA ARC team within Global Markets Non-Financial Regulatory Reporting (NFRR).</li>
+                            <li>Ported internal Java Swing/JFrame/JPanel workbench application to a React-based web application with a Spring-based REST API backend.</li>
+                            <li>Built a Data Lineage app which tracks the life cycle and transformations of a transaction through its various states and formats within the data pipeline.</li>
+                        </ul>
+                    </article>
+
+                    <article class="card">
+                        <div class="card-header">
+                            <div>
+                                <p class="card-title">Software Developer &middot; <a href="https://kaboom.ai" target="_blank">Kaboom AI 💥</a></p>
+                                <p class="card-meta">June 2025 &ndash; June 2026</p>
+                            </div>
+                        </div>
+                        <ul class="card-list">
+                            <li>Work in a small team of developers at an early stage startup, building a platform for AI-integrated account management.</li>
+                            <li>Built out several unstructured data &rarr; AI-informed insight pipelines + cross-platform integrations with CRMs.</li>
+                        </ul>
+                    </article>
+
+                    <article class="card">
+                        <div class="card-header">
+                            <div>
+                                <p class="card-title">AI Pre-Intern &middot; <a href="https://citigroup.com" target="_blank">Citigroup</a></p>
+                                <p class="card-meta">June 2023 &ndash; August 2023</p>
+                            </div>
+                        </div>
+                        <ul class="card-list">
+                            <li>Worked in a group to utilize NLP and ML techniques to interact with a large dataset of complaints filed to banks.</li>
+                            <li>Found and visualized patterns in the data, and trained/tested a LightGBM model to categorize new incoming complaints.</li>
+                        </ul>
+                    </article>
+                </div>
+
+                <h4 class="subsection-heading">Skills</h4>
+                <p class="tag-label">Languages</p>
+                <div class="tag-row">
+                    <span class="tag">Python</span>
+                    <span class="tag">Java</span>
+                    <span class="tag">TypeScript / JavaScript</span>
+                    <span class="tag">HTML / CSS</span>
+                    <span class="tag">SQL</span>
+                </div>
+                <p class="tag-label">Tools &amp; Frameworks</p>
+                <div class="tag-row">
+                    <span class="tag">Git</span>
+                    <span class="tag">React</span>
+                    <span class="tag">Postgres</span>
+                    <span class="tag">Spring Boot</span>
+                    <span class="tag">Docker</span>
+                    <span class="tag">Postman</span>
+                    <span class="tag">REST API</span>
+                    <span class="tag">FastAPI</span>
+                    <span class="tag">JIRA</span>
+                    <span class="tag">AWS Lambda</span>
+                </div>
+            </section>
+
+            <section id="currently" class="section fade-in">
+                <h2 class="section-heading">Currently</h2>
+
+                <h4 class="subsection-heading">Courses</h4>
+                <div class="tag-row">
+                    <span class="tag tag-accent">CMSC 414 &middot; Network Security</span>
+                    <span class="tag tag-accent">CMSC 471 &middot; Data Visualization</span>
+                    <span class="tag tag-accent">CMSC 474 &middot; Computational Game Theory</span>
+                    <span class="tag tag-accent">PHIL 364 &middot; Metaphysics</span>
+                    <span class="tag tag-accent">PHIL 310 &middot; Ancient Greek and Roman Philosophy</span>
+                </div>
+
+                <h4 class="subsection-heading">Media</h4>
+                <div class="media-grid">
+                    <div class="media-card">
+                        <p class="media-label">Reading</p>
+                        <p class="media-value">Fear and Trembling by S&oslash;ren Kierkegaard and Our Man in Havana by Graham Greene</p>
+                    </div>
+                    <div class="media-card">
+                        <p class="media-label">Watching</p>
+                        <p class="media-value">The Sopranos + <a href="https://letterboxd.com/adamsiro/" target="_blank">My Letterboxd</a></p>
+                    </div>
+                    <div class="media-card media-card-spotify">
+                        <p class="media-label">Listening</p>
+                        <div id="spotify-stats" class="spotify-stats" aria-live="polite">
+                            <p id="spotify-last-played" class="spotify-last-played">Last played: Loading...</p>
+                            <p class="spotify-subheading">Top artists (last 4 weeks)</p>
+                            <ol id="spotify-top-artists" class="spotify-top-artists">
                                 <li>Loading...</li>
                             </ol>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-            <h4>Other Interests:</h4>
-            <ul>
-                <li>Lifting</li>
-                <li>Learning Guitar</li>
-                <li>Knicks, Mets, Man United, and the UFC</li>
-            </ul>
-        </div>
+                        </div>
+                    </div>
+                </div>
 
+                <h4 class="subsection-heading">Other Interests</h4>
+                <div class="tag-row">
+                    <span class="tag">Lifting</span>
+                    <span class="tag">Knicks</span>
+                    <span class="tag">Mets</span>
+                    <span class="tag">Manchester United</span>
+                    <span class="tag">UFC</span>
+                </div>
+            </section>
+
+            <footer class="footer">
+                <p>Built by Adam Sirota.</p>
+            </footer>
+        </div>
 
         <script>
             (function () {
                 const root = document.documentElement;
                 const button = document.getElementById("theme-toggle");
+                const buttonLabel = button.querySelector(".theme-toggle-label");
                 const savedTheme = localStorage.getItem("theme");
                 const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
 
                 const setTheme = (theme) => {
                     root.setAttribute("data-theme", theme);
-                    button.textContent = theme === "dark" ? "Light mode" : "Dark mode";
+                    buttonLabel.textContent = theme === "dark" ? "Light mode" : "Dark mode";
                 };
 
                 setTheme(savedTheme || (prefersDark ? "dark" : "light"));
@@ -93,6 +175,23 @@
                     setTheme(nextTheme);
                     localStorage.setItem("theme", nextTheme);
                 });
+
+                if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches && "IntersectionObserver" in window) {
+                    const revealObserver = new IntersectionObserver(
+                        (entries) => {
+                            entries.forEach((entry) => {
+                                if (entry.isIntersecting) {
+                                    entry.target.classList.add("in-view");
+                                    revealObserver.unobserve(entry.target);
+                                }
+                            });
+                        },
+                        { threshold: 0.12 }
+                    );
+                    document.querySelectorAll(".fade-in").forEach((el) => revealObserver.observe(el));
+                } else {
+                    document.querySelectorAll(".fade-in").forEach((el) => el.classList.add("in-view"));
+                }
 
                 const lastPlayedEl = document.getElementById("spotify-last-played");
                 const topArtistsEl = document.getElementById("spotify-top-artists");
