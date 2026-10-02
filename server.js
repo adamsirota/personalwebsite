@@ -386,18 +386,20 @@ app.get("/api/spotify/private/stats", requirePrivateAuth, async (req, res) => {
     }
 });
 
-app.get("/spotify-lab", (req, res) => {
-    if (!isPrivateAuthorized(req)) {
-        return res.sendFile(path.join(__dirname, "spotify-lab.html"));
-    }
-    return res.sendFile(path.join(__dirname, "spotify-lab.html"));
-});
+app.use(
+    express.static(path.join(__dirname), {
+        extensions: ["html"],
+        setHeaders(res, filePath) {
+            if (filePath.includes(`${path.sep}fonts${path.sep}`)) {
+                res.setHeader("Cache-Control", "public, max-age=31536000, immutable");
+            }
+        }
+    })
+);
 
-app.get("/spotify-lab.html", (req, res) => {
-    return res.redirect("/spotify-lab");
+app.use((req, res) => {
+    res.status(404).sendFile(path.join(__dirname, "404.html"));
 });
-
-app.use(express.static(path.join(__dirname)));
 
 const useHttps = process.env.USE_HTTPS === "true";
 const sslKeyPath = process.env.SSL_KEY_PATH;

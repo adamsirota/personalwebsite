@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Not found — Adam Sirota</title>
+        <meta name="robots" content="noindex" />
+        <meta name="theme-color" content="#fbf9f6" media="(prefers-color-scheme: light)" />
+        <meta name="theme-color" content="#16130f" media="(prefers-color-scheme: dark)" />
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <link rel="preload" href="/fonts/fraunces.woff2" as="font" type="font/woff2" crossorigin />
+        <link rel="preload" href="/fonts/instrument-sans.woff2" as="font" type="font/woff2" crossorigin />
+        <link rel="stylesheet" href="/styles.css" />
+        <script>
+            (function () {
+                try {
+                    var saved = localStorage.getItem("theme");
+                    var dark = saved ? saved === "dark" : window.matchMedia("(prefers-color-scheme: dark)").matches;
+                    document.documentElement.setAttribute("data-theme", dark ? "dark" : "light");
+                } catch (e) {
+                    /* light default stands */
+                }
+            })();
+        </script>
+    </head>
+
+    <body>
+        <header class="masthead">
+            <div class="shell masthead__inner">
+                <a class="masthead__name" href="/">Adam Sirota</a>
+            </div>
+        </header>
+
+        <main id="main" class="shell error-page">
+            <div class="enter">
+                <p class="error-page__code label">Error 404</p>
+                <h1>This page doesn't exist.</h1>
+                <p>
+                    Either the link was wrong or I moved something and forgot to leave a forwarding address. The second
+                    one is more likely.
+                </p>
+                <p class="error-page__back"><a href="/">Back to the homepage</a></p>
+            </div>
+        </main>
+    </body>
+</html>

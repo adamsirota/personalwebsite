@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<!-- Source for og.png. Open at /og.html, screenshot at exactly 1200x630.
+     Keeping the template in the repo means the social card can be regenerated
+     from the real type and palette instead of redrawn by hand. -->
+<html lang="en" data-theme="dark">
+    <head>
+        <meta charset="UTF-8" />
+        <title>OG card source — Adam Sirota</title>
+        <meta name="robots" content="noindex" />
+        <link rel="stylesheet" href="/styles.css" />
+        <style>
+            html,
+            body {
+                width: 1200px;
+                height: 630px;
+                overflow: hidden;
+            }
+
+            .card {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                width: 1200px;
+                height: 630px;
+                padding: 72px 80px;
+                background: var(--paper);
+            }
+
+            .card__name {
+                font-family: var(--font-mono);
+                font-size: 20px;
+                font-weight: 500;
+                letter-spacing: 0.1em;
+                text-transform: uppercase;
+                color: var(--accent);
+            }
+
+            .card h1 {
+                max-width: 20ch;
+                font-size: 86px;
+                line-height: 0.98;
+                letter-spacing: -0.03em;
+            }
+
+            .card__foot {
+                display: flex;
+                justify-content: space-between;
+                padding-top: 28px;
+                border-top: 1px solid var(--rule);
+                font-family: var(--font-mono);
+                font-size: 21px;
+                color: var(--text-dim);
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="card">
+            <p class="card__name">Adam Sirota</p>
+            <h1>I work on the parts of software nobody demos.</h1>
+            <div class="card__foot">
+                <span>Software Engineer &middot; New York City</span>
+                <span>Computer Science &amp; Philosophy, UMD</span>
+            </div>
+        </div>
+    </body>
+</html>

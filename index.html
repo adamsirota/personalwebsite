@@ -1,258 +1,377 @@
 <!DOCTYPE html>
-
-<html lang="en">
+<html lang="en" data-theme="light">
     <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Adam Sirota</title>
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="styles.css">
-    </head>
-    <body>
-        <div class="bg-glow bg-glow-a" aria-hidden="true"></div>
-        <div class="bg-glow bg-glow-b" aria-hidden="true"></div>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-        <button id="theme-toggle" type="button" aria-label="Toggle dark mode">
-            <span class="theme-toggle-icon" aria-hidden="true"></span>
-            <span class="theme-toggle-label">Dark mode</span>
-        </button>
+        <title>Adam Sirota — Software Engineer</title>
+        <meta
+            name="description"
+            content="Adam Sirota is a software engineer working on data lineage, internal tools and the pipelines underneath. Computer science and philosophy at the University of Maryland."
+        />
+        <meta name="theme-color" content="#fbf9f6" media="(prefers-color-scheme: light)" />
+        <meta name="theme-color" content="#16130f" media="(prefers-color-scheme: dark)" />
 
-        <div class="page">
-            <header class="hero fade-in">
-                <p class="hero-eyebrow">Software Engineer &middot; New York City, NY</p>
-                <h1>Adam Sirota</h1>
-                <h3>I am a software engineer with a passion for using software to democratize access to information and resources. Studying Computer Science and Philosophy at the University of Maryland, College Park.</h3>
-                <div class="contact-links">
-                    <a class="pill-link" href="mailto:adamsirota2006@gmail.com">
-                        <svg class="pill-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 6.5C3 5.67 3.67 5 4.5 5h15c.83 0 1.5.67 1.5 1.5v11c0 .83-.67 1.5-1.5 1.5h-15A1.5 1.5 0 0 1 3 17.5v-11Z" stroke="currentColor" stroke-width="1.6"/><path d="m4 6.5 8 6.5 8-6.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                        Email
-                    </a>
-                    <a class="pill-link" href="https://www.linkedin.com/in/adamsirota13/" target="_blank">
-                        <svg class="pill-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.5 9.5v8M6.5 6.5v.01" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M11 17.5v-4.7c0-1.7 1-3.05 2.75-3.05 1.7 0 2.75 1.15 2.75 3.15v4.6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M11 17.5v-8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><rect x="3.5" y="3.5" width="17" height="17" rx="4" stroke="currentColor" stroke-width="1.6"/></svg>
-                        LinkedIn
-                    </a>
-                </div>
-            </header>
+        <!-- TODO(adam): set these to the live domain once it's settled; OG image
+             URLs must be absolute for most scrapers to pick them up. -->
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Adam Sirota — Software Engineer" />
+        <meta
+            property="og:description"
+            content="Data lineage, internal tools and the pipelines underneath. Computer science and philosophy at Maryland."
+        />
+        <meta property="og:image" content="/og.png" />
+        <meta name="twitter:card" content="summary_large_image" />
 
-            <section id="highlights" class="section fade-in">
-                <h2 class="section-heading">Experience</h2>
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
 
-                <h4 class="subsection-heading">Work</h4>
-                <div class="card-grid">
-                    <article class="card">
-                        <div class="card-header">
-                            <div>
-                                <p class="card-title">Software Engineer Intern &middot; <a href="https://bankofamerica.com" target="_blank">Bank of America</a></p>
-                                <p class="card-meta">June 2026 &ndash; August 2026</p>
-                            </div>
-                        </div>
-                        <ul class="card-list">
-                            <li>Worked on the DNA ARC team within Global Markets Non-Financial Regulatory Reporting (NFRR).</li>
-                            <li>Ported internal Java Swing/JFrame/JPanel workbench application to a React-based web application with a Spring-based REST API backend.</li>
-                            <li>Built a Data Lineage app which tracks the life cycle and transformations of a transaction through its various states and formats within the data pipeline.</li>
-                        </ul>
-                    </article>
-
-                    <article class="card">
-                        <div class="card-header">
-                            <div>
-                                <p class="card-title">Software Developer &middot; <a href="https://kaboom.ai" target="_blank">Kaboom AI 💥</a></p>
-                                <p class="card-meta">June 2025 &ndash; June 2026</p>
-                            </div>
-                        </div>
-                        <ul class="card-list">
-                            <li>Worked in a small team of developers at an early stage startup, building a platform for AI-integrated account management.</li>
-                            <li>Built out several unstructured data &rarr; AI-informed insight pipelines + cross-platform integrations with CRMs.</li>
-                        </ul>
-                    </article>
-
-                    <article class="card">
-                        <div class="card-header">
-                            <div>
-                                <p class="card-title">AI Pre-Intern &middot; <a href="https://citigroup.com" target="_blank">Citigroup</a></p>
-                                <p class="card-meta">June 2023 &ndash; August 2023</p>
-                            </div>
-                        </div>
-                        <ul class="card-list">
-                            <li>Worked in a group to utilize NLP and ML techniques to interact with a large dataset of complaints filed to banks.</li>
-                            <li>Found and visualized patterns in the data, and trained/tested a LightGBM model to categorize new incoming complaints.</li>
-                        </ul>
-                    </article>
-                </div>
-
-                <h4 class="subsection-heading">Skills</h4>
-                <p class="tag-label">Languages</p>
-                <div class="tag-row">
-                    <span class="tag">Python</span>
-                    <span class="tag">Java</span>
-                    <span class="tag">TypeScript / JavaScript</span>
-                    <span class="tag">HTML / CSS</span>
-                    <span class="tag">SQL</span>
-                </div>
-                <p class="tag-label">Tools &amp; Frameworks</p>
-                <div class="tag-row">
-                    <span class="tag">Code Generattion (Claude Code, GitHub Copilot, Cursor)</span>
-                    <span class="tag">Git</span>
-                    <span class="tag">React</span>
-                    <span class="tag">PostgreSQL</span>
-                    <span class="tag">Spring Boot</span>
-                    <span class="tag">Docker</span>
-                    <span class="tag">Postman</span>
-                    <span class="tag">REST API</span>
-                    <span class="tag">FastAPI</span>
-                    <span class="tag">JIRA</span>
-                    <span class="tag">AWS Lambda</span>
-                </div>
-            </section>
-
-            <section id="currently" class="section fade-in">
-                <h2 class="section-heading">Currently</h2>
-
-                <h4 class="subsection-heading">Courses</h4>
-                <div class="tag-row">
-                    <span class="tag tag-accent">CMSC 414 &middot; Network Security</span>
-                    <span class="tag tag-accent">CMSC 471 &middot; Data Visualization</span>
-                    <span class="tag tag-accent">CMSC 474 &middot; Computational Game Theory</span>
-                    <span class="tag tag-accent">PHIL 364 &middot; Metaphysics</span>
-                    <span class="tag tag-accent">PHIL 310 &middot; Ancient Greek and Roman Philosophy</span>
-                </div>
-
-                <h4 class="subsection-heading">Media</h4>
-                <div class="media-grid">
-                    <div class="media-card">
-                        <p class="media-label">Reading</p>
-                        <p class="media-value">Fear and Trembling by S&oslash;ren Kierkegaard + Our Man in Havana by Graham Greene</p>
-                    </div>
-                    <div class="media-card">
-                        <p class="media-label">Watching</p>
-                        <p class="media-value">The Sopranos + <a href="https://letterboxd.com/adamsiro/" target="_blank">My Letterboxd</a></p>
-                    </div>
-                    <div class="media-card media-card-spotify">
-                        <p class="media-label">Listening</p>
-                        <div id="spotify-stats" class="spotify-stats" aria-live="polite">
-                            <p id="spotify-last-played" class="spotify-last-played">Last played: Loading...</p>
-                            <p class="spotify-subheading">Top artists (last 4 weeks)</p>
-                            <ol id="spotify-top-artists" class="spotify-top-artists">
-                                <li>Loading...</li>
-                            </ol>
-                        </div>
-                    </div>
-                </div>
-
-                <h4 class="subsection-heading">Other Interests</h4>
-                <div class="tag-row">
-                    <span class="tag">Lifting</span>
-                    <span class="tag">Boxing</span>
-                    <span class="tag">Learning Guitar</span>
-                    <span class="tag">Knicks/Mets/MUFC</span>
-                </div>
-            </section>
-
-            <footer class="footer">
-                <p>Built by Adam Sirota.</p>
-            </footer>
-        </div>
+        <link rel="preload" href="/fonts/fraunces.woff2" as="font" type="font/woff2" crossorigin />
+        <link rel="preload" href="/fonts/instrument-sans.woff2" as="font" type="font/woff2" crossorigin />
+        <link rel="preload" href="/fonts/plex-mono-400.woff2" as="font" type="font/woff2" crossorigin />
+        <!-- weight 500 carries the eyebrow and masthead, both above the fold -->
+        <link rel="preload" href="/fonts/plex-mono-500.woff2" as="font" type="font/woff2" crossorigin />
+        <link rel="stylesheet" href="/styles.css" />
 
         <script>
+            // Blocking on purpose: resolving the theme before first paint is what
+            // prevents a flash of the wrong background.
             (function () {
-                const root = document.documentElement;
-                const button = document.getElementById("theme-toggle");
-                const buttonLabel = button.querySelector(".theme-toggle-label");
-                const savedTheme = localStorage.getItem("theme");
-                const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-
-                const setTheme = (theme) => {
-                    root.setAttribute("data-theme", theme);
-                    buttonLabel.textContent = theme === "dark" ? "Light mode" : "Dark mode";
-                };
-
-                setTheme(savedTheme || (prefersDark ? "dark" : "light"));
-
-                button.addEventListener("click", () => {
-                    const nextTheme = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
-                    setTheme(nextTheme);
-                    localStorage.setItem("theme", nextTheme);
-                });
-
-                if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches && "IntersectionObserver" in window) {
-                    const revealObserver = new IntersectionObserver(
-                        (entries) => {
-                            entries.forEach((entry) => {
-                                if (entry.isIntersecting) {
-                                    entry.target.classList.add("in-view");
-                                    revealObserver.unobserve(entry.target);
-                                }
-                            });
-                        },
-                        { threshold: 0.12 }
-                    );
-                    document.querySelectorAll(".fade-in").forEach((el) => revealObserver.observe(el));
-                } else {
-                    document.querySelectorAll(".fade-in").forEach((el) => el.classList.add("in-view"));
+                try {
+                    var saved = localStorage.getItem("theme");
+                    var dark = saved ? saved === "dark" : window.matchMedia("(prefers-color-scheme: dark)").matches;
+                    document.documentElement.setAttribute("data-theme", dark ? "dark" : "light");
+                } catch (e) {
+                    /* localStorage unavailable; the light default stands */
                 }
-
-                const lastPlayedEl = document.getElementById("spotify-last-played");
-                const topArtistsEl = document.getElementById("spotify-top-artists");
-
-                const renderSpotifyFallback = () => {
-                    lastPlayedEl.textContent = "Last played: unavailable right now.";
-                    topArtistsEl.innerHTML = "<li>Unable to load top artists.</li>";
-                };
-
-                const loadSpotifyStats = async () => {
-                    try {
-                        const response = await fetch("/api/spotify/stats");
-                        if (!response.ok) {
-                            throw new Error("Spotify API request failed");
-                        }
-
-                        const data = await response.json();
-                        const artists = Array.isArray(data.topArtists) ? data.topArtists.slice(0, 3) : [];
-                        const playedAtText = data.lastPlayed?.playedAt
-                            ? new Date(data.lastPlayed.playedAt).toLocaleString(undefined, {
-                                  dateStyle: "medium",
-                                  timeStyle: "short"
-                              })
-                            : null;
-
-                        if (data.lastPlayed && data.lastPlayed.track && data.lastPlayed.artist) {
-                            const trackUrl = data.lastPlayed.url || "#";
-                            lastPlayedEl.innerHTML =
-                                'Last played: <a href="' +
-                                trackUrl +
-                                '" target="_blank" rel="noopener noreferrer">' +
-                                data.lastPlayed.track +
-                                "</a> - " +
-                                data.lastPlayed.artist +
-                                (playedAtText ? ' <span class="spotify-timestamp">(' + playedAtText + ")</span>" : "");
-                        } else {
-                            lastPlayedEl.textContent = "Last played: no recent data.";
-                        }
-
-                        if (!artists.length) {
-                            topArtistsEl.innerHTML = "<li>No artist data available.</li>";
-                            return;
-                        }
-
-                        topArtistsEl.innerHTML = "";
-                        artists.forEach((artist) => {
-                            const li = document.createElement("li");
-                            if (artist.url) {
-                                li.innerHTML = '<a href="' + artist.url + '" target="_blank" rel="noopener noreferrer">' + artist.name + "</a>";
-                            } else {
-                                li.textContent = artist.name;
-                            }
-                            topArtistsEl.appendChild(li);
-                        });
-                    } catch (error) {
-                        renderSpotifyFallback();
-                    }
-                };
-
-                loadSpotifyStats();
             })();
         </script>
+
+        <script src="/main.js" defer></script>
+    </head>
+
+    <body>
+        <a class="skip-link" href="#main">Skip to content</a>
+
+        <header class="masthead">
+            <div class="shell masthead__inner">
+                <a class="masthead__name" href="/">Adam Sirota</a>
+
+                <div class="masthead__right">
+                    <nav class="masthead__nav" aria-label="Sections">
+                        <ul>
+                            <li><a href="#work">Work</a></li>
+                            <li><a href="#now">Now</a></li>
+                            <li><a href="#contact">Contact</a></li>
+                        </ul>
+                    </nav>
+
+                    <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to dark theme">
+                        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z" />
+                        </svg>
+                        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <circle cx="12" cy="12" r="4.25" />
+                            <path d="M12 3v1.75M12 19.25V21M3 12h1.75M19.25 12H21M5.64 5.64l1.24 1.24M17.12 17.12l1.24 1.24M18.36 5.64l-1.24 1.24M6.88 17.12l-1.24 1.24" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <main id="main">
+            <!-- TODO(adam): voice check. The headline and lead are built only from
+                 facts already on your site, but the phrasing is mine — rewrite in
+                 your own words if any of it doesn't sound like you. -->
+            <section class="shell hero enter" aria-labelledby="intro">
+                <p class="hero__eyebrow label">Software Engineer &middot; New York City</p>
+
+                <h1 id="intro">I work on the parts of software nobody demos.</h1>
+
+                <p class="hero__lead">
+                    Data lineage, internal tools and the pipelines underneath: tracing a single transaction through
+                    every state and format it takes, moving a Java desktop workbench into the browser, getting a model
+                    to sort complaints faster than anyone could read them. The thread through all of it is making
+                    information and resources easier to reach.
+                </p>
+
+                <p class="hero__study">
+                    Studying computer science and philosophy at the University of Maryland, College Park.
+                </p>
+
+                <ul class="hero__links">
+                    <li><a href="mailto:adamsirota2006@gmail.com">Email</a></li>
+                    <li>
+                        <a href="https://www.linkedin.com/in/adamsirota13/" target="_blank" rel="noopener noreferrer">
+                            LinkedIn
+                        </a>
+                    </li>
+                </ul>
+            </section>
+
+            <section class="section section--tight" id="work" aria-labelledby="work-title">
+                <div class="shell">
+                    <div class="section__head">
+                        <h2 class="section__title" id="work-title">Work</h2>
+                        <p class="section__note">Three roles, most recent first.</p>
+                    </div>
+
+                    <ol class="roles">
+                        <li>
+                            <article class="role spine">
+                                <p class="role__period mono">Jun&ndash;Aug 2026</p>
+                                <div class="role__body">
+                                    <h3 class="role__title">
+                                        Software Engineer Intern,
+                                        <a href="https://bankofamerica.com" target="_blank" rel="noopener noreferrer">
+                                            Bank of America
+                                        </a>
+                                    </h3>
+                                    <p class="role__team mono">
+                                        DNA ARC &middot; Global Markets, Non-Financial Regulatory Reporting
+                                    </p>
+                                    <div>
+                                        <p class="prose">
+                                            Ported an internal Java Swing workbench to a React web application backed by
+                                            a Spring REST API.
+                                        </p>
+                                        <p class="prose">
+                                            Built a data lineage app that tracks a transaction's life cycle through
+                                            every state and format it takes on its way through the pipeline &mdash; the
+                                            kind of thing you only need when something has already gone wrong.
+                                        </p>
+                                    </div>
+                                    <p class="role__stack mono">Java &middot; Swing &middot; React &middot; Spring &middot; REST</p>
+                                </div>
+                            </article>
+                        </li>
+
+                        <li>
+                            <article class="role spine">
+                                <p class="role__period mono">Jun 2025&ndash;Jun 2026</p>
+                                <div class="role__body">
+                                    <h3 class="role__title">
+                                        Software Developer,
+                                        <a href="https://kaboom.ai" target="_blank" rel="noopener noreferrer">
+                                            Kaboom AI
+                                        </a>
+                                    </h3>
+                                    <p class="role__team mono">Early-stage startup &middot; small engineering team</p>
+                                    <div>
+                                        <p class="prose">
+                                            Helped build a platform for AI-integrated account management. My share was
+                                            the pipelines that turn unstructured data into usable insight, plus the
+                                            cross-platform integrations that push those insights back into customers'
+                                            CRMs.
+                                        </p>
+                                    </div>
+                                    <!-- TODO(adam): add the stack line here. Your original copy never
+                                         named the languages or services, so I left it out rather than guess. -->
+                                </div>
+                            </article>
+                        </li>
+
+                        <li>
+                            <article class="role spine">
+                                <p class="role__period mono">Jun&ndash;Aug 2023</p>
+                                <div class="role__body">
+                                    <h3 class="role__title">
+                                        AI Pre-Intern,
+                                        <a href="https://citigroup.com" target="_blank" rel="noopener noreferrer">
+                                            Citigroup
+                                        </a>
+                                    </h3>
+                                    <div>
+                                        <p class="prose">
+                                            Worked in a group on a large dataset of complaints filed against banks,
+                                            using NLP and machine learning to make sense of it. We found and visualized
+                                            patterns in the data, then trained and tested a LightGBM model to
+                                            categorize new complaints as they came in.
+                                        </p>
+                                    </div>
+                                    <p class="role__stack mono">NLP &middot; Machine learning &middot; LightGBM</p>
+                                </div>
+                            </article>
+                        </li>
+                    </ol>
+                </div>
+            </section>
+
+            <section class="section section--tight" aria-labelledby="tools-title">
+                <div class="shell spine">
+                    <h3 class="label" id="tools-title">Tools</h3>
+                    <dl>
+                        <div class="stack-group">
+                            <dt class="label">Languages</dt>
+                            <dd>
+                                <ul class="run">
+                                    <li>Python</li>
+                                    <li>Java</li>
+                                    <li>TypeScript / JavaScript</li>
+                                    <li>SQL</li>
+                                    <li>HTML / CSS</li>
+                                </ul>
+                            </dd>
+                        </div>
+                        <div class="stack-group">
+                            <dt class="label">Frameworks &amp; infrastructure</dt>
+                            <dd>
+                                <ul class="run">
+                                    <li>React</li>
+                                    <li>Spring Boot</li>
+                                    <li>FastAPI</li>
+                                    <li>PostgreSQL</li>
+                                    <li>Docker</li>
+                                    <li>AWS Lambda</li>
+                                    <li>REST APIs</li>
+                                </ul>
+                            </dd>
+                        </div>
+                        <div class="stack-group">
+                            <dt class="label">Day to day</dt>
+                            <dd>
+                                <ul class="run">
+                                    <li>Git</li>
+                                    <li>Postman</li>
+                                    <li>Jira</li>
+                                    <li>Claude Code</li>
+                                    <li>Cursor</li>
+                                    <li>GitHub Copilot</li>
+                                </ul>
+                            </dd>
+                        </div>
+                    </dl>
+                </div>
+            </section>
+
+            <section class="section section--airy" id="now" aria-labelledby="now-title">
+                <div class="shell">
+                    <div class="section__head">
+                        <h2 class="section__title" id="now-title">Now</h2>
+                        <p class="section__note">What's actually on my desk and in my headphones this semester.</p>
+                    </div>
+
+                    <dl class="now-rows">
+                        <div class="now-row spine">
+                            <dt class="label">Courses</dt>
+                            <dd>
+                                <ul class="course-list">
+                                    <li><span class="course-code mono">CMSC 414</span> Network Security</li>
+                                    <li><span class="course-code mono">CMSC 471</span> Data Visualization</li>
+                                    <li><span class="course-code mono">CMSC 474</span> Computational Game Theory</li>
+                                    <li><span class="course-code mono">PHIL 364</span> Metaphysics</li>
+                                    <li>
+                                        <span class="course-code mono">PHIL 310</span> Ancient Greek and Roman
+                                        Philosophy
+                                    </li>
+                                </ul>
+                            </dd>
+                        </div>
+
+                        <div class="now-row spine">
+                            <dt class="label">Reading</dt>
+                            <dd>
+                                <p class="media-item">
+                                    <span class="media-item__what"><em>Fear and Trembling</em></span>, S&oslash;ren
+                                    Kierkegaard
+                                </p>
+                                <p class="media-item">
+                                    <span class="media-item__what"><em>Our Man in Havana</em></span>, Graham Greene
+                                </p>
+                            </dd>
+                        </div>
+
+                        <div class="now-row spine">
+                            <dt class="label">Watching</dt>
+                            <dd>
+                                <p class="media-item">
+                                    <span class="media-item__what"><em>The Sopranos</em></span> &mdash; everything else
+                                    I've seen is on <a href="https://letterboxd.com/adamsiro/" target="_blank" rel="noopener noreferrer">Letterboxd</a>.
+                                </p>
+                            </dd>
+                        </div>
+
+                        <div class="now-row spine">
+                            <dt class="label">Listening</dt>
+                            <dd>
+                                <div class="spotify" id="spotify" aria-live="polite">
+                                    <p class="spotify__track">
+                                        <span class="spotify__dot" aria-hidden="true"></span>
+                                        <span id="spotify-last-played">Loading recent plays&hellip;</span>
+                                    </p>
+                                    <div class="spotify__artists">
+                                        <p class="label">Top artists, last 4 weeks</p>
+                                        <ol id="spotify-top-artists"></ol>
+                                    </div>
+                                </div>
+                            </dd>
+                        </div>
+
+                        <div class="now-row spine">
+                            <dt class="label">Off screen</dt>
+                            <dd>
+                                <ul class="run">
+                                    <li>Lifting</li>
+                                    <li>Boxing</li>
+                                    <li>Learning guitar</li>
+                                    <li>Knicks / Mets / MUFC</li>
+                                </ul>
+                            </dd>
+                        </div>
+                    </dl>
+                </div>
+            </section>
+
+            <section class="section section--airy" id="contact" aria-labelledby="contact-title">
+                <div class="shell">
+                    <h2 class="contact__statement" id="contact-title">Say hello.</h2>
+                    <!-- TODO(adam): the second sentence describes what you want to hear about.
+                         Confirm it matches what you're actually looking for. -->
+                    <p class="contact__detail">
+                        Email is the surest way to reach me. I'm most interested in work on data infrastructure,
+                        internal tools, and anything that makes a complicated system easier to understand.
+                    </p>
+
+                    <ul class="contact__links">
+                        <li>
+                            <a href="mailto:adamsirota2006@gmail.com">
+                                <span class="contact__channel">Email</span>
+                                <span class="contact__value">adamsirota2006@gmail.com</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.linkedin.com/in/adamsirota13/" target="_blank" rel="noopener noreferrer">
+                                <span class="contact__channel">LinkedIn</span>
+                                <span class="contact__value">in/adamsirota13</span>
+                            </a>
+                        </li>
+                        <!-- TODO(adam): I inferred this GitHub handle from the repository URL in
+                             package.json. Confirm it's the profile you want linked, or delete. -->
+                        <li>
+                            <a href="https://github.com/adamsirota" target="_blank" rel="noopener noreferrer">
+                                <span class="contact__channel">GitHub</span>
+                                <span class="contact__value">adamsirota</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://letterboxd.com/adamsiro/" target="_blank" rel="noopener noreferrer">
+                                <span class="contact__channel">Letterboxd</span>
+                                <span class="contact__value">adamsiro</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <div class="shell footer__inner">
+                <p class="mono">Built by Adam Sirota</p>
+                <p class="mono">
+                    <a href="https://github.com/adamsirota/personalwebsite" target="_blank" rel="noopener noreferrer">
+                        Source
+                    </a>
+                </p>
+            </div>
+        </footer>
     </body>
 </html>
