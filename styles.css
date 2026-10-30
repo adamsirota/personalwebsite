@@ -583,6 +583,63 @@ html[data-theme="dark"] .theme-toggle .icon-moon {
     color: var(--text-dim);
 }
 
+/* --- Projects ----------------------------------------------------------- */
+
+.projects > li + li {
+    border-top: 1px solid var(--rule);
+}
+
+.project {
+    position: relative;
+    padding-block: var(--s-8);
+}
+
+.project::before {
+    content: "";
+    position: absolute;
+    left: calc(var(--gutter) * -1 + var(--s-2));
+    top: var(--s-8);
+    bottom: var(--s-8);
+    width: 2px;
+    background: var(--accent);
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform var(--dur) var(--ease);
+}
+
+.project:hover::before,
+.project:focus-within::before {
+    transform: scaleY(1);
+}
+
+.project__meta {
+    color: var(--text-dim);
+    padding-top: 0.45em;
+}
+
+.project__title {
+    font-size: var(--step-2);
+    margin-bottom: var(--s-1);
+}
+
+.project__links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 var(--s-3);
+    margin-bottom: var(--s-4);
+    color: var(--text-dim);
+}
+
+.project__links li + li::before {
+    content: "·";
+    margin-right: var(--s-3);
+    color: var(--rule-strong);
+}
+
+.project__body .prose {
+    color: var(--text);
+}
+
 /* --- Inline runs (skills, interests): typography, not pills ------------- */
 
 .run {

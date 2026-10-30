@@ -58,6 +58,7 @@
                     <nav class="masthead__nav" aria-label="Sections">
                         <ul>
                             <li><a href="#work">Work</a></li>
+                            <li><a href="#projects">Projects</a></li>
                             <li><a href="#now">Now</a></li>
                             <li><a href="#contact">Contact</a></li>
                         </ul>
@@ -225,6 +226,52 @@
                             </dd>
                         </div>
                     </dl>
+                </div>
+            </section>
+
+            <section class="section section--tight" id="projects" aria-labelledby="projects-title">
+                <div class="shell">
+                    <div class="section__head">
+                        <h2 class="section__title" id="projects-title">Projects</h2>
+                    </div>
+
+                    <ol class="projects">
+                        <li>
+                            <article class="project spine">
+                                <p class="project__meta mono">2026</p>
+                                <div class="project__body">
+                                    <h3 class="project__title">
+                                        <a href="https://example.com" target="_blank" rel="noopener noreferrer">
+                                            MLB xwRC+ Visualizer
+                                        </a>
+                                    </h3>
+                                    <ul class="project__links mono">
+                                        <li>
+                                            <a href="https://xwrcplus.onrender.com" target="_blank" rel="noopener noreferrer">
+                                                Live
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a
+                                                href="https://github.com/adamsirota/xwrcplus"
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                            >
+                                                Source
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <p class="prose">
+                                        Analyzed historical MLB player statistics to find under- and over-performers and predict next season’s hitting success. 
+                                        Used XGBoost model to find importances of features contributing to a player’s wRC+ (batting success) and applied to the 2026 season to generate expected wRC+ (xwRC+) and find differences in players’ true vs. expected outcomes.
+                                        Applied an aging curve to get xwRC+ for the upcoming 2027 and plotted players in comparison to their career wRC+ to highlight possible breakout or regression candidates. 
+                                        Hosted full results dashboard on an interactive Flask app.
+
+                                    </p>
+                                </div>
+                            </article>
+                        </li>
+                    </ol>
                 </div>
             </section>
 
